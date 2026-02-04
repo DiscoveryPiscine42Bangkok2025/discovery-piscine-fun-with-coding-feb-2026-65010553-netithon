@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 50px;
+}
+
+/* ตัว sandwich */
+.sandwich {
+  width: 220px;
+  /* text-align: center; */
+}
+
+.bread {
+  background: #2c2c2c;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* ไส้ sandwich (dropdown) */
+.filling {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  display: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* แต่ละชิ้น */
+.filling li {
+  padding: 12px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.filling li:last-child {
+  border-bottom: none;
+}
+
+/* hover */
+.bread:hover .filling {
+  display: block;
+}
+
+/* hover item */
+.filling li:hover {
+  background: #e60012; /* แดง SNCF */
+  color: white;
+}

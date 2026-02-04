@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>It's over 9000</title>
+</head>
+<body>
+
+  <input type="text" id="left" placeholder="Input number">
+
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+  </select>
+
+  <input type="text" id="right" placeholder="Input number">
+
+  <input type="submit" value="Try me!" id="btn">
+
+  <script>
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click", () => {
+      const left = document.getElementById("left").value;
+      const right = document.getElementById("right").value;
+      const op = document.getElementById("operator").value;
+
+      const a = Number(left);
+      const b = Number(right);
+
+      // check จน.เต็มบวก
+      if (
+        left === "" || right === "" ||
+        !Number.isInteger(a) || !Number.isInteger(b) ||
+        a < 0 || b < 0
+      ) {
+        alert("Error :(");
+        return;
+      }
+
+      //  check การหารด้วยศูนย์
+      if ((op === "/" || op === "%") && b === 0) {
+        alert("It's over 9000!");
+        console.log("It's over 9000!");
+        return;
+      }
+
+      let result;
+      switch (op) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "*": result = a * b; break;
+        case "/": result = a / b; break;
+        case "%": result = a % b; break;
+      }
+
+      alert(result);
+      console.log(result);
+    });
+
+    // แจ้งเตือนทุก 30 วินาที
+    setInterval(() => {
+      alert("Please, use me...");
+    }, 30000);
+  </script>
+
+</body>
+</html>
+
+<!-- โจทย์คือให้ทำเครื่องคิดเลข โดยมีเงื่อนไขดังนี้
+1. รับค่าจาก input สองตัว และ select หนึ่งตัว
+2. ตรวจสอบว่าค่าที่รับมาเป็นจำนวนเต็มบวกหรือไม่ ถ้าไม่ใช่ให้แจ้งเตือน "Error :(
+3. ถ้าหารด้วย 0 ให้เตือนว่า It's over 9000!
+4. ตั้งเวลาแจ้งเตือนทุก 30 วินาทีว่า "Please, use me..." -->
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>It's over 9000</title>
+</head>
+<body>
+
+  <input type="text" id="left" placeholder="Input number">
+
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+  </select>
+
+  <input type="text" id="right" placeholder="Input number">
+
+  <input type="submit" value="Try me!" id="btn">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- jQuery -->
+  <script>
+    $(document).ready(function () {     // เดิม: document.addEventListener("DOMContentLoaded", ...)
+      const $btn = $("#btn");           // เดิม: const btn = document.getElementById("btn");
+      $btn.on("click", function () {    // เดิม: btn.addEventListener("click", ...)
+        
+
+        const left = $("#left").val();      //  เดิม document.getElementById("left").value
+        const right = $("#right").val();     // เดิม document.getElementById("right").value
+        const op = $("#operator").val();    // เดิม document.getElementById("operator").value
+        const a = Number(left);
+        const b = Number(right);
+
+        // check จน.เต็มบวก
+        if (
+          left === "" || right === "" ||
+          !Number.isInteger(a) || !Number.isInteger(b) ||
+          a < 0 || b < 0
+        ) {
+          alert("Error :(");
+          return;
+        }
+
+        // check การหารด้วย 0
+        if ((op === "/" || op === "%") && b === 0) {
+          alert("It's over 9000!");
+          console.log("It's over 9000!");
+          return;
+        }
+
+        let result;
+        switch (op) {
+          case "+": result = a + b; break;
+          case "-": result = a - b; break;
+          case "*": result = a * b; break;
+          case "/": result = a / b; break;
+          case "%": result = a % b; break;
+        }
+
+        alert(result);
+        console.log(result);
+      });
+
+      // แจ้งเตือนทุก 30 วินาที
+      setInterval(function () {         // เดอมsetInterval ใช้เหมือนเดิม ไม่ต้องเปลี่ยนเป็น jQuery
+        alert("Please, use me...");
+      }, 30000);
+    });
+  </script>
+
+</body>
+</html>
