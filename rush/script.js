@@ -42,8 +42,8 @@ window.addEventListener('scroll', () => {
     });
 
     navLinks.forEach(link => {                                      // อัปเดตสถานะ active ของลิงก์ในเมนู
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        link.classList.remove('active');                            // ลบคลาส active จากลิงก์ทั้งหมด
+        if (link.getAttribute('href') === `#${current}`) {          // เพิ่มคลาส active ให้กับลิงก์ที่ตรงกับ section ปัจจุบัน
             link.classList.add('active');
         }
     });
